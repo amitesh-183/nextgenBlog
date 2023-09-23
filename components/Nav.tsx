@@ -3,17 +3,17 @@ import React from "react";
 
 export default function Nav() {
   return (
-    <div>
-      <div className="nav container bg-green-400 shadow-md shadow-green-600 w-full flex justify-between px-40 items-center py-4">
-        <div className="logo">
-          {/* <Image
-            src="/assets/logo.webp"
-            width={300}
+    <div className="relative">
+      <div className="nav w-full text-white fixed flex justify-between px-40 items-center py-4">
+        <div className="logo flex">
+          <Image
+            src="/assets/blogging.png"
+            width={40}
             className=" object-cover"
-            height={240}
+            height={40}
             alt="logo"
-          /> */}
-          <h1 className=" font-black text-4xl">NextGen</h1>
+          />
+          <h1 className=" font-black text-4xl">NexGen</h1>
         </div>
         <div>
           <ul id="menu" className="flex gap-6 uppercase text-lg font-bold">

@@ -34,3 +34,12 @@
   filter: FlipH;
   -ms-filter: "FlipH";
 }
+
+.hero-bg {
+  background-image: url("/assets/hero-bg.jpg");
+  background-size: cover;
+}
+
+/* .hover-nav{
+@apply bg
+} */

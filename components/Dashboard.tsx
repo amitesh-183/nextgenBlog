@@ -96,7 +96,7 @@ export default function Dashboard() {
       <div className="container">
         <div className="sidebar">
           <span className="logo">S</span>
-          <a className="logo-expand" href="#">
+          <a className="logo-expand" href="/">
             NexDashboard
           </a>
           <div className="side-wrapper">
