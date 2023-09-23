@@ -18,10 +18,13 @@ export default function Dashboard() {
     // Window resize handling
     function handleResize() {
       const sidebar = document.querySelector(".sidebar");
-      if (window.innerWidth > 1090) {
-        sidebar.classList.remove("collapse");
-      } else {
-        sidebar.classList.add("collapse");
+      if (sidebar) {
+        // Check if sidebar exists
+        if (window.innerWidth > 1090) {
+          sidebar.classList.remove("collapse");
+        } else {
+          sidebar.classList.add("collapse");
+        }
       }
     }
 
@@ -31,46 +34,52 @@ export default function Dashboard() {
     // Video hover handling
     const allVideos = document.querySelectorAll(".video");
     allVideos.forEach((v) => {
-      v.addEventListener("mouseover", () => {
-        const video = v.querySelector("video");
-        video.play();
-      });
-      v.addEventListener("mouseleave", () => {
-        const video = v.querySelector("video");
-        video.pause();
-      });
+      const video = v.querySelector("video");
+      if (video) {
+        v.addEventListener("mouseover", () => {
+          video.play();
+        });
+        v.addEventListener("mouseleave", () => {
+          video.pause();
+        });
+      }
     });
-
     // Click handling for logo, logo-expand, and discover
     const mainContainer = document.querySelector(".main-container");
-    document
-      .querySelectorAll(".logo, .logo-expand, .discover")
-      .forEach((el) => {
-        el.addEventListener("click", () => {
-          mainContainer.classList.remove("show");
-          mainContainer.scrollTop = 0;
+    if (mainContainer) {
+      document
+        .querySelectorAll(".logo, .logo-expand, .discover")
+        .forEach((el) => {
+          el.addEventListener("click", () => {
+            mainContainer.classList.remove("show");
+            mainContainer.scrollTop = 0;
+          });
         });
-      });
+    }
 
     // Click handling for trending and video
     document.querySelectorAll(".trending, .video").forEach((el) => {
       el.addEventListener("click", () => {
-        mainContainer.classList.add("show");
-        mainContainer.scrollTop = 0;
+        if (mainContainer) {
+          // Check if mainContainer is not null
+          mainContainer.classList.add("show");
+          mainContainer.scrollTop = 0;
+        }
         sidebarLinks.forEach((link) => link.classList.remove("is-active"));
-        document.querySelector(".trending").classList.add("is-active");
+        const trendingElement = document.querySelector(".trending");
+        if (trendingElement) {
+          trendingElement.classList.add("is-active");
+        }
       });
     });
 
     // Click handling for video elements
     document.querySelectorAll(".video").forEach((videoElement) => {
       videoElement.addEventListener("click", () => {
-        const source = videoElement.querySelector("source").getAttribute("src");
-        const title = videoElement.querySelector(".video-name").textContent;
-        const person = videoElement.querySelector(".video-by").textContent;
-        const img = videoElement
-          .querySelector(".author-img")
-          .getAttribute("src");
+        const sourceElement = videoElement.querySelector("source");
+        const titleElement = videoElement.querySelector(".video-name");
+        const personElement = videoElement.querySelector(".video-by");
+        const imgElement = videoElement.querySelector(".author-img");
 
         const videoStream = document.querySelector(".video-stream video");
         const videoStreamSource = document.querySelector(
@@ -82,12 +91,20 @@ export default function Dashboard() {
           ".video-detail .author-img"
         );
 
-        videoStream.pause();
-        videoStreamSource.setAttribute("src", source);
-        videoStream.load();
-        videoPTitle.textContent = title;
-        videoPName.textContent = person;
-        videoDetailAuthorImg.setAttribute("src", img);
+        // // Check if all required elements are found before proceeding
+        // if (sourceElement && titleElement && personElement && imgElement) {
+        //   const source = sourceElement.getAttribute("src");
+        //   const title = titleElement.textContent;
+        //   const person = personElement.textContent;
+        //   const img = imgElement.getAttribute("src");
+
+        //   videoStream.pause();
+        //   videoStreamSource.setAttribute("src", source);
+        //   videoStream.load();
+        //   videoPTitle.textContent = title;
+        //   videoPName.textContent = person;
+        //   videoDetailAuthorImg.setAttribute("src", img);
+        // }
       });
     });
   }, []);

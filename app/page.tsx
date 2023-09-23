@@ -23,9 +23,11 @@ export default function Home() {
             tomorrow.&quot;
           </p>
           <div className=" flex gap-4 mt-2">
-            <button className=" bg-green-400 bg-opacity-40 hover:bg-blue-500 hover:bg-opacity-25 hover:border hover:border-blue-600 font-bold w-[10rem] hover:shadow-md duration-300 ease-in-out px-8 py-4 rounded-xl">
-              <Link href="/admin">Admin</Link>
-            </button>
+            <Link href="/admin">
+              <button className=" bg-green-400 bg-opacity-40 hover:bg-blue-500 hover:bg-opacity-25 hover:border hover:border-blue-600 font-bold w-[10rem] hover:shadow-md duration-300 ease-in-out px-8 py-4 rounded-xl">
+                Admin
+              </button>
+            </Link>
             <button className="border border-green-200 w-[10rem] hover:border hover:border-blue-600 hover:bg-blue-400 hover:bg-opacity-25 font-bold hover:shadow-md duration-300 ease-in-out  px-8 py-4 rounded-xl">
               Learn more
             </button>
